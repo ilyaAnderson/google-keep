@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annders keep</title>
+    <link rel="stylesheet" href="./css.css">
+    <link rel="stylesheet" href="./variables.css">
+    <link rel="stylesheet" href="./animation.css">
+    <link rel="icon" href="../Photo/logo_keep_2026_color_2x_web_48dp.png">
+</head>
+<body>
+<header>
+    <div class="brand-box-name" data-tooltip="Keep">
+        <div class="brand-icon"></div>
+        <div class="brand-name">Keep</div>
+    </div>
+    <div class="main-block-search">
+        <div class="search-box">
+            <div class="search-icon" data-tooltip="Поиск"></div>
+            <input type="text" class="search" placeholder="Поиск">
+        </div>
+    </div>
+    <div class="main-block-menu">
+        <div class="main-bitton-history"></div>
+    </div>
+</header>
+<div class="main">
+    <div class="main-box-creater">
+        <div class="main-creater">
+            <input type="text" class="creater-head" id="keephead" tabindex="0" placeholder="Название">
+            <div class="pin" data-tooltip="Закрепить"></div>
+            <div class="creater-line">
+                <textarea class="creater" id="keepcontent" placeholder="Заметка..."></textarea>
+                <div class="creater-icon-photo" data-tooltip="Добавить изображение"></div>
+            </div>
+            <div class="main-block-button">
+                <div class="creater-icon-photo" id="photo-second" data-tooltip="Добавить изображение"></div>
+            </div>
+        </div>
+    </div>
+    <div class="keep-text">закрепленные</div>
+    <div class="keeps-box" id="pined"></div>
+    <div class="keep-text">другие</div>
+    <div class="keeps-box" id="default"></div>
+</div>
+<footer>
+
+</footer>
+</body>
+<script src="/google keep/main.js"></script>
+</html>

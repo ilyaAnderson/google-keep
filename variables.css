@@ -1,0 +1,36 @@
+:root {
+--main-color-back: white;
+--main-color-search: rgb(232, 237, 249);
+--color-text-brand: black;
+--color-text-lighter: white;
+--color-attr-button-back: #2c2c2c;
+--color-button-hover-search:rgb(219, 224, 239);
+--color-button-hover: rgb(235, 235, 235);
+--color-border: rgb(219, 219, 219);
+--color-box-shadow-creater: rgba(0, 0, 0, 0.2);
+--color-border-creater: rgba(0, 0, 0, 0.1);
+--color-text-creater: rgb(39, 39, 39);
+--color-text-keep-content: black;
+--main-color-line-header: rgb(219, 219, 219);
+--color-text-search: rgb(75, 75, 75);
+--color-text-search-focus: rgb(53, 53, 53);
+} 
+@media (prefers-color-scheme: dark) {
+:root {
+--main-color-back: rgb(33, 33, 36); 
+--main-color-search: rgb(44, 47, 50);    
+--color-text-brand: rgb(252, 252, 252);
+--color-text-lighter: white;
+--color-attr-button-back: #666666;
+--color-button-hover-search:rgb(219, 224, 239);
+--color-button-hover: rgb(79, 79, 79);
+--color-border: rgb(131, 131, 131);
+--color-box-shadow-creater: rgba(0, 0, 0, 0.2);
+--color-border-creater: rgba(202, 202, 202, 0.1);
+--color-text-creater: rgb(216, 216, 216);
+--main-color-line-header: rgb(125, 125, 125);
+--color-text-keep-content: rgb(226, 226, 226);
+--color-text-search: rgb(212, 212, 212);
+--color-text-search-focus: white;
+}
+}
