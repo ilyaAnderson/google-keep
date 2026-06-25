@@ -295,7 +295,6 @@ const renderingNote = () => {
         currentContainer.appendChild(newKeep);
         newKeep.addEventListener('click', () => {
 
-            console.log("клик");
             
             const noteId = newKeep.getAttribute('data-id');
     
