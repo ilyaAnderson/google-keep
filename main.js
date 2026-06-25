@@ -200,7 +200,7 @@ document.addEventListener('mousedown', (event) => {
         draggedElement.style.height = `${rect.height}px`; // Фиксируем высоту
         draggedElement.style.transition = 'none';
         
-        //. МГНОВЕННО позиционируем элемент в те же координаты, где он и стоял
+        // МГНОВЕННО позиционируем элемент в те же координаты, где он и стоял
         draggedElement.style.position = 'fixed'; 
         draggedElement.style.left = `${rect.left}px`;
         draggedElement.style.top = `${rect.top}px`;
