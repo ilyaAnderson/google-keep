@@ -1,4 +1,4 @@
-// 1. Кешируем элементы один раз, чтобы не искать их постоянно
+// Кешируем элементы один раз, чтобы не искать их постоянно
 const demo__button = document.querySelector(".creater-icon-photo");
 const keeps_box = document.querySelector('.keeps-box');
 const input = document.querySelector('.creater');
@@ -57,7 +57,7 @@ input.addEventListener('focus', () => {
 let pin_value = false;
 // Клик по пину
 pin.addEventListener('click', () => {
-    pin_value = !pin_value; // Упрощено переключение true/false
+    pin_value = !pin_value;
     pin.classList.toggle('used');
 });
 
@@ -89,7 +89,7 @@ document.body.addEventListener('click', (event) => {
     const buttondelete = document.createElement('div');
     buttondelete.classList.add('delete'); 
     buttondelete.setAttribute('data-tooltip', 'Удалить заметку');       
-    buttondelete.setAttribute('data-id', noteId); // ИСПРАВЛЕНО: добавляем id новой кнопке удаления
+    buttondelete.setAttribute('data-id', noteId);
     
     const newKeep = document.createElement('div');
     newKeep.classList.add('keep');
