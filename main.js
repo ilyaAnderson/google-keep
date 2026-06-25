@@ -17,8 +17,6 @@ const photoSecond = document.querySelector('#photo-second');
 const defaultContainer = document.querySelector('#default');
 const pinedContainer = document.querySelector('#pined');
 const arrLocal = JSON.parse(localStorage.getItem('history')) || [];
-console.log(localStorage);
-console.log(arrLocal);
 
 let shiftX = 0;
 let shiftY = 0;
