@@ -142,21 +142,21 @@ document.body.addEventListener('click', (event) => {
 function moveElement(event) {
     if (!draggedElement) return;
 
-    // 1. Двигаем перетаскиваемый элемент за курсором
+    // Двигаем перетаскиваемый элемент за курсором
     draggedElement.style.top = `${event.clientY - shiftY}px`;
     draggedElement.style.left = `${event.clientX - shiftX}px`;
 
-    // 2. Находим DOM-элемент под курсором
+    // Находим DOM-элемент под курсором
     const elementUnderCursor = document.elementFromPoint(event.clientX, event.clientY);
     if (!elementUnderCursor) return;
 
-    // 3. Ищем, является ли этот элемент заметкой .keep (или её внутренностью)
+    // Ищем, является ли этот элемент заметкой .keep (или её внутренностью)
     const targetKeep = elementUnderCursor.closest('.keep');
 
     // Нам нужна чужая заметка, и это не должен быть сам фантом
     if (targetKeep && targetKeep !== draggedElement) {
         
-        // 4. Получаем размеры и координаты заметки, над которой парим
+        // Получаем размеры и координаты заметки, над которой парим
         const rect = targetKeep.getBoundingClientRect();
         
         // Вычисляем вертикальный центр этой заметки
@@ -166,7 +166,7 @@ function moveElement(event) {
         const phantom = document.querySelector('.phantom');
         if (!phantom) return;
 
-        // 5. Сравниваем координату мыши Y с центром заметки
+        // Сравниваем координату мыши Y с центром заметки
         if (event.clientY < targetCenterY) {
             // Если мышка выше центра — фантом прыгает ДО этой заметки
             targetKeep.insertAdjacentElement('beforebegin', phantom);
@@ -187,22 +187,22 @@ document.addEventListener('mousedown', (event) => {
     if (keepTarget && !event.target.classList.contains('delete')) {
         draggedElement = keepTarget; 
         
-        // 1. Получаем точные экранные координаты карточки прямо сейчас
+        // Получаем точные экранные координаты карточки прямо сейчас
         const rect = draggedElement.getBoundingClientRect();
         
-        // 2. Считаем сдвиг мыши относительно верхнего левого угла карточки
+        // Считаем сдвиг мыши относительно верхнего левого угла карточки
         shiftX = event.clientX - rect.left;
         shiftY = event.clientY - rect.top;
 
         // Создаем фантом НА МЕСТЕ карточки, пока она еще в потоке
         addPhantom(keepTarget, height);
 
-        // 3. Задаем фиксированные размеры и отключаем анимацию
+        // Задаем фиксированные размеры и отключаем анимацию
         draggedElement.style.width = `${rect.width}px`; 
         draggedElement.style.height = `${rect.height}px`; // Фиксируем высоту
         draggedElement.style.transition = 'none';
         
-        // 4. МГНОВЕННО позиционируем элемент в те же координаты, где он и стоял
+        //. МГНОВЕННО позиционируем элемент в те же координаты, где он и стоял
         draggedElement.style.position = 'fixed'; 
         draggedElement.style.left = `${rect.left}px`;
         draggedElement.style.top = `${rect.top}px`;
@@ -229,15 +229,15 @@ document.addEventListener('mouseup', () => {
     if (draggedElement) {
         window.removeEventListener('mousemove', moveElement);
         
-        // 1. СНАЧАЛА находим фантом в DOM дереве
+        //  СНАЧАЛА находим фантом в DOM дереве
         const phantom = document.querySelector('.phantom');
         
-        // 2. Если фантом существует, заменяем его нашей карточкой
+        // Если фантом существует, заменяем его нашей карточкой
         if (phantom) {
             phantom.replaceWith(draggedElement);
         }
         
-        // 3. Сбрасываем стили и возвращаем карточку в обычный поток сетки
+        // Сбрасываем стили и возвращаем карточку в обычный поток сетки
         draggedElement.classList.remove('shake');
         draggedElement.style.pointerEvents = 'auto'; // Возвращаем реакцию на мышь
         
