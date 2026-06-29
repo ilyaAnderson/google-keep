@@ -2,10 +2,10 @@
 --main-color-back: url('Photo/macos-tahoe-26-5120x2880-22675.jpg');
 --main-color-search: rgba(232, 237, 249, 0.5);
 --color-text-brand: rgb(255, 255, 255);
---color-text-lighter: white;
---color-attr-button-back: #2c2c2c;
+--color-text-lighter: #666666;
+--color-attr-button-back: #ffffff;
 --color-button-hover-search:rgb(219, 224, 239);
---color-button-hover: rgba(5, 5, 5, 0.3);
+--color-button-hover: rgba(255, 255, 255, 0.4);
 --color-border: rgb(219, 219, 219, 1);
 --color-box-shadow-creater: rgba(255, 255, 255, 0.2);
 --color-border-creater: rgb(219, 219, 219, 1);
@@ -14,10 +14,14 @@
 --main-color-line-header: rgb(219, 219, 219);
 --color-text-search: rgb(75, 75, 75);
 --color-text-search-focus: rgb(53, 53, 53);
+--media-pin: url(Photo/pinOutBlack.png);
+--media-pin-used: url(Photo/pinDownBlack.png);
 } 
 @media (prefers-color-scheme: dark) {
 :root {
 --main-color-back: url(Photo/macos-tahoe-26-5120x2880-22674.jpg); 
+--media-pin: url(Photo/pinOutWhite.png);
+--media-pin-used: url(Photo/pinDownWhite.png);
 --main-color-search: rgba(255, 255, 255, 0.2);    
 --color-text-brand: rgb(252, 252, 252);
 --color-text-lighter: white;

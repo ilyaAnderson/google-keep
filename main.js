@@ -1,11 +1,10 @@
-// Кешируем элементы один раз, чтобы не искать их постоянно
+// 1. Кешируем элементы один раз, чтобы не искать их постоянно
 const demo__button = document.querySelector(".creater-icon-photo");
 const keeps_box = document.querySelector('.keeps-box');
 const input = document.querySelector('.creater');
 const keep__content = document.querySelector('#keepcontent');
 const keep__head = document.querySelector('#keephead');
 const pin = document.querySelector('.pin');
-
 // Элементы формы создания для быстрой работы
 const createrHead = document.querySelector('.creater-head');
 const mainBlockButton = document.querySelector('.main-block-button');
@@ -17,6 +16,8 @@ const photoSecond = document.querySelector('#photo-second');
 const defaultContainer = document.querySelector('#default');
 const pinedContainer = document.querySelector('#pined');
 const arrLocal = JSON.parse(localStorage.getItem('history')) || [];
+console.log(localStorage);
+console.log(arrLocal);
 
 let shiftX = 0;
 let shiftY = 0;
@@ -33,6 +34,8 @@ const addPhantom = (element, height) => {
 document.addEventListener('click', (event) => {
     if (event.target.classList.contains('delete')) {
         const grandfather = event.target.closest('.keep'); 
+        const box = grandfather.querySelector('.buttonbox') 
+        const shutdown_back = document.querySelector('.shutdown-back')
         if (grandfather) grandfather.remove();
         const idToDelete = event.target.getAttribute('data-id'); 
         localStorage.removeItem(idToDelete);
@@ -45,9 +48,77 @@ document.addEventListener('click', (event) => {
         });
         localStorage.removeItem('history')
         localStorage.setItem('history', JSON.stringify(idsArray))
+        if ( document.body.contains( document.querySelector('.shutdown-back') ) ) {
+            grandfather.classList.remove('fullscreen')
+            document.body.removeChild(shutdown_back)
+        }
+    } else if (event.target.classList.contains('screen')) {
+            const grandfather = event.target.closest('.keep');
+            const box = grandfather.querySelector('.buttonbox') 
+            const child = box.querySelector('.screen');
+            const shutdown_back = document.createElement('div')
+            const content = grandfather.querySelector('.keep-content')
+            const newContent = document.createElement('textarea')
+            const data_id = grandfather.getAttribute('data-id')
+            const data = JSON.parse(localStorage.getItem(data_id))
+
+            if (content) {
+                newContent.className = input.className;
+                newContent.value = content.textContent.trim();
+                content.replaceWith(newContent)
+            }
+            newContent.style.padding = '0px'
+            const title = grandfather.querySelector('.keep-head')
+            const newTitle = document.createElement('input')
+            newTitle.type = 'text'
+            newTitle.style.background = 'transparent'
+            newTitle.style.border = 'transparent'
+            newTitle.style.outline = 'transparent'
+            newTitle.style.gridRow = '1 / 1'
+            newTitle.style.gridColumn = '1 / 1'
+            newTitle.style.height = '50px'
+            if (title) {
+                newTitle.className = title.className;
+                newTitle.value = title.textContent.trim();
+                title.replaceWith(newTitle);
+            }
+            shutdown_back.classList.add('shutdown-back')
+            shutdown_back.addEventListener('click', () => {
+                grandfather.classList.remove('fullscreen')
+                box.appendChild(child)
+                document.body.removeChild(shutdown_back)
+                const newData = {
+                    "title": `${newTitle.value}`,
+                    "content": `${newContent.value}`,
+                    "pin": data.pin
+                }
+                localStorage.setItem(grandfather.getAttribute('data-id'), JSON.stringify(newData))
+                    const allNotes = document.querySelectorAll('.keep');
+                    const idsArray = [];
+
+                    allNotes.forEach((noteElement) => {
+                    const noteId = noteElement.getAttribute('data-id');
+                    idsArray.push(noteId);
+                    });
+                    localStorage.removeItem('history')
+                    localStorage.setItem('history', JSON.stringify(idsArray))
+                renderingNote()
+            })
+
+            // 1. Включаем плавность
+            grandfather.style.transition = 'all 0.3s ease'; // Исправлено: 'ease' вместо 'easy'
+            grandfather.classList.add('fullscreen');
+            document.body.append(shutdown_back)
+
+            setTimeout(() => {
+                if (child && child.parentNode === box) {
+                    box.removeChild(child);
+                }
+                grandfather.style.transition = 'all 0.1s ease'; 
+            }, 300);
+            
     }
 });
-
 // Открытие формы (Фокус)
 input.addEventListener('focus', () => {
     const elements = [createrHead, pin, mainBlockButton, createrIconPhoto, mainCreater, mainBoxCreater, createrInput];
@@ -57,7 +128,7 @@ input.addEventListener('focus', () => {
 let pin_value = false;
 // Клик по пину
 pin.addEventListener('click', () => {
-    pin_value = !pin_value;
+    pin_value = !pin_value; // Упрощено переключение true/false
     pin.classList.toggle('used');
 });
 
@@ -85,11 +156,18 @@ document.body.addEventListener('click', (event) => {
     // Генерируем уникальный ID для новой заметки сразу
     const noteId = `note_${Date.now()}_${Math.round(Math.random() * 100000)}`;
 
+    const buttonbox = document.createElement('div');
+    buttonbox.classList.add('buttonbox'); 
+
     // Создание структуры новой заметки
     const buttondelete = document.createElement('div');
     buttondelete.classList.add('delete'); 
     buttondelete.setAttribute('data-tooltip', 'Удалить заметку');       
-    buttondelete.setAttribute('data-id', noteId);
+    buttondelete.setAttribute('data-id', noteId); // ИСПРАВЛЕНО: добавляем id новой кнопке удаления
+
+    const buttonscreen = document.createElement('div');
+    buttonscreen.classList.add('screen'); 
+    buttonscreen.setAttribute('data-tooltip', 'Открыть заметку'); 
     
     const newKeep = document.createElement('div');
     newKeep.classList.add('keep');
@@ -103,7 +181,9 @@ document.body.addEventListener('click', (event) => {
     keepHeadEl.classList.add('keep-head');
     keepHeadEl.textContent = keep__head__value;
 
-    newKeep.appendChild(buttondelete);
+    buttonbox.appendChild(buttondelete);
+    buttonbox.appendChild(buttonscreen);
+    newKeep.appendChild(buttonbox);
     newKeep.appendChild(keepHeadEl);
     newKeep.appendChild(keepBody);
 
@@ -140,21 +220,21 @@ document.body.addEventListener('click', (event) => {
 function moveElement(event) {
     if (!draggedElement) return;
 
-    // Двигаем перетаскиваемый элемент за курсором
+    // 1. Двигаем перетаскиваемый элемент за курсором
     draggedElement.style.top = `${event.clientY - shiftY}px`;
     draggedElement.style.left = `${event.clientX - shiftX}px`;
 
-    // Находим DOM-элемент под курсором
+    // 2. Находим DOM-элемент под курсором
     const elementUnderCursor = document.elementFromPoint(event.clientX, event.clientY);
     if (!elementUnderCursor) return;
 
-    // Ищем, является ли этот элемент заметкой .keep (или её внутренностью)
+    // 3. Ищем, является ли этот элемент заметкой .keep (или её внутренностью)
     const targetKeep = elementUnderCursor.closest('.keep');
 
     // Нам нужна чужая заметка, и это не должен быть сам фантом
     if (targetKeep && targetKeep !== draggedElement) {
         
-        // Получаем размеры и координаты заметки, над которой парим
+        // 4. Получаем размеры и координаты заметки, над которой парим
         const rect = targetKeep.getBoundingClientRect();
         
         // Вычисляем вертикальный центр этой заметки
@@ -164,7 +244,7 @@ function moveElement(event) {
         const phantom = document.querySelector('.phantom');
         if (!phantom) return;
 
-        // Сравниваем координату мыши Y с центром заметки
+        // 5. Сравниваем координату мыши Y с центром заметки
         if (event.clientY < targetCenterY) {
             // Если мышка выше центра — фантом прыгает ДО этой заметки
             targetKeep.insertAdjacentElement('beforebegin', phantom);
@@ -178,29 +258,31 @@ function moveElement(event) {
 
 // Перетаскивание (Mousedown)
 document.addEventListener('mousedown', (event) => {
-    document.body.style.cursor = 'grabbing'
     const keepTarget = event.target.closest('.keep');
     let height = keepTarget ? keepTarget.offsetHeight : 0; 
     
-    if (keepTarget && !event.target.classList.contains('delete')) {
+    if ( document.body.contains( document.querySelector('.shutdown-back')) ) return
+
+    if (keepTarget && !event.target.classList.contains('delete') && !event.target.classList.contains('screen') ) {
         draggedElement = keepTarget; 
+        document.body.style.cursor = 'grabbing'
         
-        // Получаем точные экранные координаты карточки прямо сейчас
+        // 1. Получаем точные экранные координаты карточки прямо сейчас
         const rect = draggedElement.getBoundingClientRect();
         
-        // Считаем сдвиг мыши относительно верхнего левого угла карточки
+        // 2. Считаем сдвиг мыши относительно верхнего левого угла карточки
         shiftX = event.clientX - rect.left;
         shiftY = event.clientY - rect.top;
 
         // Создаем фантом НА МЕСТЕ карточки, пока она еще в потоке
         addPhantom(keepTarget, height);
 
-        // Задаем фиксированные размеры и отключаем анимацию
+        // 3. Задаем фиксированные размеры и отключаем анимацию
         draggedElement.style.width = `${rect.width}px`; 
         draggedElement.style.height = `${rect.height}px`; // Фиксируем высоту
         draggedElement.style.transition = 'none';
         
-        // МГНОВЕННО позиционируем элемент в те же координаты, где он и стоял
+        // 4. МГНОВЕННО позиционируем элемент в те же координаты, где он и стоял
         draggedElement.style.position = 'fixed'; 
         draggedElement.style.left = `${rect.left}px`;
         draggedElement.style.top = `${rect.top}px`;
@@ -213,32 +295,50 @@ document.addEventListener('mousedown', (event) => {
 
 
 document.addEventListener('mouseup', () => {
-    document.body.style.cursor = 'auto'
-    const allNotes = document.querySelectorAll('.keep');
-    const idsArray = [];
-
-    allNotes.forEach((noteElement) => {
-    const noteId = noteElement.getAttribute('data-id');
-    idsArray.push(noteId);
-    });
-    localStorage.removeItem('history')
-    localStorage.setItem('history', JSON.stringify(idsArray))
-    
     if (draggedElement) {
         window.removeEventListener('mousemove', moveElement);
         
-        //  СНАЧАЛА находим фантом в DOM дереве
+        // 1. СНАЧАЛА находим фантом в DOM дереве
         const phantom = document.querySelector('.phantom');
         
-        // Если фантом существует, заменяем его нашей карточкой
+        // 2. Если фантом существует, заменяем его нашей карточкой
         if (phantom) {
             phantom.replaceWith(draggedElement);
         }
         
-        // Сбрасываем стили и возвращаем карточку в обычный поток сетки
+        // 3. Сбрасываем стили и возвращаем карточку в обычный поток сетки
         draggedElement.classList.remove('shake');
         draggedElement.style.pointerEvents = 'auto'; // Возвращаем реакцию на мышь
-        
+        if ( defaultContainer.contains(draggedElement) ) {
+            const id = draggedElement.getAttribute("data-id") 
+            const data = localStorage.getItem(`${id}`)
+            const newData = JSON.parse(data)
+            console.log(newData);
+            newData.pin = false 
+            console.log(newData);
+            localStorage.setItem(id, JSON.stringify(newData))
+
+        }
+        if ( pinedContainer.contains(draggedElement) ) {
+            const id = draggedElement.getAttribute("data-id") 
+            const data = localStorage.getItem(`${id}`)
+            const newData = JSON.parse(data)
+            console.log(newData);
+            newData.pin = true 
+            console.log(newData);
+            localStorage.setItem(id, JSON.stringify(newData))
+
+        }
+        document.body.style.cursor = 'auto'
+        const allNotes = document.querySelectorAll('.keep');
+        const idsArray = [];
+
+        allNotes.forEach((noteElement) => {
+        const noteId = noteElement.getAttribute('data-id');
+        idsArray.push(noteId);
+        });
+        localStorage.removeItem('history')
+        localStorage.setItem('history', JSON.stringify(idsArray))
         draggedElement.style.position = ''; 
         draggedElement.style.top = '';
         draggedElement.style.left = '';
@@ -269,10 +369,17 @@ const renderingNote = () => {
         const currentContainer = ArrayData.pin ? pinedContainer : defaultContainer;
         if (!currentContainer) continue;
 
+        const buttonbox = document.createElement('div');
+        buttonbox.classList.add('buttonbox'); 
+
         const buttondelete = document.createElement('div');
         buttondelete.classList.add('delete'); 
         buttondelete.setAttribute('data-tooltip', 'Удалить заметку'); 
         buttondelete.setAttribute('data-id', key);  
+
+        const buttonscreen = document.createElement('div');
+        buttonscreen.classList.add('screen'); 
+        buttonscreen.setAttribute('data-tooltip', 'Открыть заметку'); 
 
         const newKeep = document.createElement('div');
         newKeep.classList.add('keep');
@@ -286,17 +393,18 @@ const renderingNote = () => {
         keepHeadEl.classList.add('keep-head');
         keepHeadEl.textContent = ArrayData.title;
 
-        newKeep.appendChild(buttondelete);
+        buttonbox.appendChild(buttondelete);
+        buttonbox.appendChild(buttonscreen);
+        newKeep.appendChild(buttonbox);
         newKeep.appendChild(keepHeadEl);
         newKeep.appendChild(keepBody);
         
         currentContainer.appendChild(newKeep);
         newKeep.addEventListener('click', () => {
-
             
             const noteId = newKeep.getAttribute('data-id');
     
-            openModal(noteId);
+            // openModal(noteId);
 });
     }
 };
