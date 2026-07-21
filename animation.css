@@ -1,0 +1,119 @@
+@keyframes shake {
+    0% {
+        rotate: 0deg;
+    }
+    25% {
+        rotate: 3deg;
+    }
+    75% {
+        rotate: -3deg;
+    }
+    100% {
+        rotate: 0deg;
+    }
+}
+@keyframes swapingDisplay {
+    20% {
+        transform: translateY(-5px);
+    }
+    30% {
+        scale: 1.2;
+    }
+    100% {
+        scale: 0;
+        transform: translateY(0px);
+    }
+}
+@keyframes entry {
+    0%, 30% {
+        transform: scaleX(0);
+        opacity: 1;
+        transform-origin: right center;
+    }
+    50% {
+        transform: scaleX(1);
+        opacity: 1;
+        transform-origin: right center;
+    }
+    50.1% {
+        transform-origin: left center;
+    }
+    100% {
+        opacity: 1;
+        transform-origin: left center;
+        transform: scaleX(0);
+    }
+}
+@keyframes woooouh {
+    0% {
+        transform: translateY(100vh);
+    }
+    100% {
+        transform: translateY(-100vh);
+    }
+}
+@keyframes woooouh2 {
+    0% {
+        transform: translateX(30vw) translateY(100vh);
+    }
+    100% {
+        transform: translateX(30vw) translateY(-100vh);
+    }
+}
+@keyframes woooouh3 {
+    0% {
+        transform: translateX(70vw) translateY(100vh);
+    }
+    100% {
+        transform: translateX(70vw) translateY(-100vh);
+    }
+}
+@keyframes exit {
+    0%, 30% {
+        transform: scaleX(0);
+        opacity: 1;
+        transform-origin: left center;
+    }
+    50% {
+        transform: scaleX(1);
+        opacity: 1;
+        transform-origin: left center;
+    }
+    50.1% {
+        transform-origin: right center;
+    }
+    100% {
+        opacity: 1;
+        transform-origin: right center;
+        transform: scaleX(0);
+    }
+}
+@keyframes app {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+@keyframes lineBottomHeader {
+    0%  {
+        border-color: rgba(255, 255, 255, 0);
+    }
+    100% {
+        border-color: var(--main-color-line-header);
+    }
+}
+@keyframes swapingDisplay {
+    0% { opacity: 1;}
+    30% {
+        transform: translateY(-10px) scaleX(0.8);
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px) scaleX(1);
+    }
+}

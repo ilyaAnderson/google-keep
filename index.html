@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annders keep</title>
+    <link rel="stylesheet" href="./css.css">
+    <link rel="stylesheet" href="./variables.css">
+    <link rel="stylesheet" href="./animation.css">
+    <link rel="icon" href="Photo/logo_keep_2026_color_2x_web_48dp.png">
+</head>
+<body>
+<div class="slide-one">
+<header>
+    <div class="brand-box-name" data-tooltip="Keep">
+        <div class="brand-icon"></div>
+        <div class="brand-name">Keep</div>
+    </div>
+    <div class="main-block-search">
+        <div class="search-box">
+            <div class="search-icon" data-tooltip="Поиск"></div>
+            <input type="text" id="searchKeep" class="search" placeholder="Поиск">
+            <div id="clearSearch" class="clear-icon" data-tooltip="Очистить"></div>
+        </div>
+    </div>
+    <div class="main-block-menu">
+        <div class="button-color-castom"></div>
+    </div>
+</header>
+<div class="main">
+    <div class="main-box-creater">
+        <div class="main-creater">
+            <input type="text" class="creater-head" id="keephead" tabindex="0" placeholder="Название">
+            <div class="pin" data-tooltip="Закрепить"></div>
+            <div class="creater-line">
+                <textarea class="creater" id="keepcontent" placeholder="Заметка..."></textarea>
+                <div class="creater-icon-photo" data-tooltip="Добавить изображение"></div>
+            </div>
+            <div class="main-block-button">
+                <div class="creater-icon-photo" id="photo-second" data-tooltip="Добавить изображение"></div>
+            </div>
+        </div>
+    </div>
+    <div class="keep-text">закрепленные</div>
+    <div class="keeps-box" id="pined"></div>
+    <div class="keep-text">другие</div>
+    <div class="keeps-box" id="default"></div>
+</div>
+<footer>
+
+</footer>
+</div>
+<div class="slide-two">
+<div class="top">
+    <div class="button-exit"></div>    
+    Кастомизация
+</div>
+<div class="biglist">
+    <div class="tab-list">
+        <div class="tab" id="keep-tab">заметки</div>
+        <div class="tab" id="search-tab">поиск</div>
+        <div class="tab" id="creater-tab">создатель</div>
+        <!-- <div class="tab">интерфейс</div> -->
+    </div>
+    <div class="tab-view" id="keep-castom-feature">
+        <div class="preview">Предварительный просмотр</div>
+        <div class="view">
+            <div class="keep-test">
+                <div class="keep-head-test">Название</div>
+                <div class="keep-content-test">Заметка...</div>
+                <div class="pin-keep" data-tooltip="Закрепить"></div>
+                <div class="screen" data-tooltip="Открыть заметку"></div>
+                <div class="delete" data-tooltip="Удалить заметку"></div>
+            </div>
+        </div>
+        <div class="feature">
+            <div class="feature-name">цвет</div>
+            <div class="feature-color-box">
+            <input type="color" value="white" id="color-keep-feature" class="feature-color">
+            </div>
+            <input type="range" value="10" id="opacity-keep-feature" class="feature-range">
+            <div class="feature-name">обводка</div>
+            <div class="feature-color-box">
+            <input type="color" value="white" id="color-border-keep-feature" class="feature-color">
+            </div>
+            <input type="range" value="50" id="opacity-border-feature" style="background-image: linear-gradient(to left, var(--color-border), transparent);" class="feature-range">
+        </div>
+        <div class="feature">
+            <div class="feature-name">тень</div>
+            <div class="feature-color-box">
+            <input type="color" value="white" id="color-shadow-feature" class="feature-color" style="background-image: linear-gradient(to left, var(--color-shadow), transparent);">
+            </div>
+            <input type="range" value="20" id="opacity-shadow-feature" class="feature-range">
+            <div class="feature-name">яркость</div>
+            <input type="range" value="20" id="brightness-shadow" style="background-image: linear-gradient(to right, var(--brightness-shadow), white);" class="feature-range">
+            <img src="Photo/brightness.svg" class="icon-feature" alt="интенсивность">
+        </div>
+        <div class="feature">
+            <div class="feature-name">заголовок</div>
+            <div class="feature-color-box">
+            <input type="color" value="white" id="color-title" class="feature-color" style="background-image: linear-gradient(to left, var(--color-text-keep-content), transparent);">
+            </div>
+            <input type="range" value="100" id="opacity-title" class="feature-range">
+            <div class="feature-name">текст</div>
+                        <div class="feature-color-box">
+            <input type="color" value="white" id="color-content" class="feature-color">
+            </div>
+            <input type="range" value="100" id="opacity-content" style="background-image: linear-gradient(to left, var(--color-text-title), transparent);" class="feature-range">
+        </div>
+        <div class="saveCastom">сохранить</div>
+        <div class="ClearsaveCastom">по умолчанию</div>
+    </div>
+    <div class="tab-view" id="search-castom-feature">
+        <div class="preview">Предварительный просмотр</div>
+        <div class="view">
+        <div class="search-box-test">
+            <div class="search-icon-test" data-tooltip="Поиск"></div>
+            <div class="search">поиск</div>
+            <div class="clear-icon-test" data-tooltip="Очистить"></div>
+        </div>
+        <div class="search-box-test">
+            <div class="search-icon-test" data-tooltip="Поиск"></div>
+            <div class="search-active">текст...|</div>
+            <div class="clear-icon-test" data-tooltip="Очистить"></div>
+        </div>
+        </div>
+        <div class="feature">
+            <div class="feature-name">цвет</div>
+            <div class="feature-color-box">
+            <input type="color" value="white" id="color-search" class="feature-color">
+            </div>
+            <input type="range" value="50" id="opacity-search" class="feature-range" style="background-image: linear-gradient(to left, var(--main-color-search), transparent);">
+            <div class="feature-name">обводка</div>
+            <div class="feature-color-box">
+            <input type="color" value="white" id="color-border-search" class="feature-color">
+            </div>
+            <input type="range" value="70" id="opacity-border-search" style="background-image: linear-gradient(to left, var(--color-border-search), transparent);" class="feature-range">
+        </div>
+        <div class="feature">
+            <div class="feature-name">яркость</div>
+            <input type="range" value="50" id="brightness-search" class="feature-range">
+            <img src="Photo/brightness.svg" class="icon-feature" alt="интенсивность">
+            <div class="feature-name">текст</div>
+            <div class="feature-color-box">
+            <input type="color" value="rgb(75, 75, 75)" id="color-text-search" class="feature-color">
+            </div>
+            <input type="range" value="100" id="opacity-text-search" style="background-image: linear-gradient(to left, var(--color-text-search), transparent);" class="feature-range">
+        </div>
+        <div class="feature">
+            <div class="feature-name">при вводе</div>
+            <div class="feature-color-box">
+            <input type="color" value="rgb(53, 53, 53)" id="color-text-search-active" class="feature-color">
+            </div>
+            <input type="range" value="100" id="opacity-text-search-active" class="feature-range" style="background-image: linear-gradient(to left, var(--color-text-search-focus), transparent);">
+        </div>
+        <div class="saveCastom">сохранить</div>
+        <div class="ClearsaveCastom">по умолчанию</div>
+    </div>
+    <div class="tab-view" id="creater-castom-feature">
+        <div class="preview">Предварительный просмотр</div>
+        <div class="view">
+    <div class="main-box-creater-test clicked">
+        <div class="main-creater-test clicked">
+            <div class="creater-head-test clicked" id="keephead">Название..</div>
+            <div class="pin" style="display: block;" data-tooltip="Закрепить"></div>
+            <div class="creater-line-test clicked">
+                <div class="creater-test" id="keepcontent">Заметка..</div>
+            </div>
+        </div>
+    </div>
+        </div>
+        <div class="feature">
+            <div class="feature-name">цвет</div>
+            <div class="feature-color-box">
+            <input type="color" value="white" id="color-creater" class="feature-color">
+            </div>
+            <input type="range" value="0" id="opacity-creater" class="feature-range" style="background-image: linear-gradient(to left, var(--main-color-search), transparent);">
+            <div class="feature-name">обводка</div>
+            <div class="feature-color-box">
+            <input type="color" value="white" id="border-color-creater" class="feature-color">
+            </div>
+            <input type="range" value="100" id="opacity-border-creater" style="background-image: linear-gradient(to left, var(--color-border-search), transparent);" class="feature-range">
+        </div>
+        <div class="feature">
+            <div class="feature-name">текст</div>
+            <div class="feature-color-box">
+            <input type="color" value="white" id="color-text-creater" class="feature-color">
+            </div>
+            <input type="range" value="100" id="opacity-text-creater" style="background-image: linear-gradient(to left, var(--color-text-search), transparent);" class="feature-range">
+        </div>
+        <div class="saveCastom">сохранить</div>
+        <div class="ClearsaveCastom">по умолчанию</div>
+    </div>
+</div>
+</div>
+</body>
+<script src="main.js"></script>
+<div class="svg">
+<svg width="0" height="0" style="position: absolute;">
+  <filter id="liquid-distortion">
+    <!-- Турбулентность создает эффект волн и преломлений -->
+    <feTurbulence 
+      type="fractalNoise" 
+      baseFrequency="0.02" 
+      numOctaves="3" 
+      result="noise" />
+    <!-- DisplacementMap сдвигает пиксели фона на основе шума -->
+    <feDisplacementMap 
+      in="SourceGraphic" 
+      in2="noise" 
+      scale="20" 
+      xChannelSelector="R" 
+      yChannelSelector="G" />
+  </filter>
+</svg>
+<svg xmlns="http://w3.org" style="display: none;">
+  <defs>
+    <filter id="liquid-refraction">
+      <!-- Генерируем мягкий фрактальный шум для имитации жидкой среды -->
+      <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="2" result="noise" />
+      <!-- Смещаем пиксели заднего фона на основе сгенерированного шума (эффект линзы) -->
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="18" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </defs>
+</svg>
+</div>
+</html>
