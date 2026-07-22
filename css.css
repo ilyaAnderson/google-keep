@@ -370,69 +370,6 @@ background-color: rgba(255, 255, 255, 0.526);
     gap: 30px;
     box-sizing: border-box;
 }
-.castom-list {
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    background: var(--main-color-search-result);
-    border: 0.5px solid rgba(245, 245, 245, 0.7);
-    backdrop-filter: blur(7px) brightness(2);
-    flex-wrap: nowrap;
-    color: var(--color-text-creater);
-    gap: 10px;
-    font-size: 18px;
-    border-bottom: 0.5px whitesmoke;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
-    box-sizing: border-box;
-    padding: 0px 2px;
-    margin: 0px;
-}
-.castom-list p {
-    margin: 0px;
-    margin-top: 10px;
-    margin-left: 10px;
-    flex-grow: 1;
-}
-.first-line-castom {
-    display: flex;
-    flex-direction: row;
-}
-.tumbler {
-    width: 60px;
-    height: 30px;
-    border-radius: 50vh;
-    background-color: rgb(197, 197, 197);
-    margin: 5px 5px 0px 0px;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    transition: all 0.3s ease;
-}
-img {
-    margin-top: 5px;
-}
-.tumbler-circle {
-    position: absolute;
-    width: 26px;
-    height: 26px;
-    border-radius: 50vh;
-    background-color: rgb(255, 255, 255);
-    margin: 0px 2px;
-}
-.tumbler.clicked {
-    background-color: rgb(0, 187, 255);
-    justify-content: end;
-}
-.color-fon-castom, .color-main-text-castom, .color-search-castom, .color-text-search-castom, .color-keep-castom, .color-shadow-keep-castom, .color-border-keep-castom {
-    width: 100%;
-    height: 200%;
-    background: no-repeat center/cover;
-    border: transparent;
-    outline: transparent;
-    scale: 1.3;
-}
 .button-exit {
     margin-left: 30px;
     background-image: url('Photo/exit.svg');
@@ -1083,10 +1020,9 @@ input[type = 'submit']:hover {
     backdrop-filter: url(#liquid-refraction) saturate(140%) brightness(1.1);
 }
 .view {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    grid-column: 1 / 6;
+    display: grid;
+    place-items: center;
+    grid-column: 1  ;
     grid-row: 2;
 }
 .feature {
@@ -1113,6 +1049,7 @@ input[type = 'submit']:hover {
     gap: 50px;
     grid-column: 1/6;
     grid-row: 2;
+    display: grid;
     place-items: center;
     filter: saturate(1.5);
     background: var(--main-color-back) no-repeat center/cover;
