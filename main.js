@@ -102,7 +102,7 @@ clearsaves.forEach(clearsave => {
     event.preventDefault()
     localStorage.removeItem('ArrayCastom')
     window.location.reload()
-})})
+})})    
 
 search.addEventListener('input', () => {
     if(search.value !== '') {
