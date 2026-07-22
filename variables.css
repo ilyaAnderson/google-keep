@@ -182,33 +182,63 @@
         grid-template-columns: 1fr 1fr 1fr;
     }
     .main-box-creater {
-        width: 70%;
-        max-width: 400px;
+        width: 50%;
+        max-width: 300px;
+        min-height: 20px;
+        border-radius: 3px;
+    }
+    .main-box-creater.clicked {
+        padding: 5px;
+    }
+    .creater-head {
+        font-size: 14px;
     }
     .brand-box-name {
-        width: 120px;
-        gap: 5px;
+        width: 80px;
+        gap: 0px;
     }
-    .bran-name {
-        font-size: 20px;
+    .brand-name {
+        font-size: 10px;
         font-weight: 400;
     }
     .brand-icon {
-        width: 35px;
-        height: 35px;
+        width: 20px;
+        height: 20px;
     }
     header {
-        gap: 30px;
+        gap: 0px;
+        height: 40px;
     }
     .button-color-castom {
-        margin-right: 20px;
+        margin-right: 10px;
+        width: 30px;
+        height: 30px;
+    }
+    .main {
+        padding-top: 10px;
+    }
+    .creater {
+        min-height: 20px;
+        padding: 5px;
+        font-size: 10px;
+    }
+    .creater.clicked {
+        margin-bottom: 0px;
+    }
+    .pin {
+        height: 20px;
+        align-self: center;
+        width: 20px;
     }
     .search-box {
         margin-left: 0px;
-        width: clamp(100px, 100%, 500px);
+        height: 30px;
+        width: 30px;
     }
     .search-icon {
-        margin-left: 5px;
+        margin-left: 0px;
+        height: 30px;
+        width: 30px;
     }
     .search-box.clicked {
         width: clamp(50px, 100%, 720px);
@@ -231,6 +261,10 @@
         margin: 0px;
         font-size: 10px;
     }
+    .keep-text {
+        margin: 10px 0px 0px 25px;
+        font-size: 10px;
+    }
 }
 @media ( max-width: 360px ) {
     .keeps-box {
@@ -238,10 +272,13 @@
         grid-template-columns: 1fr 1fr;
     }
     .main-box-creater {
-        width: 250px;
+        width: 50%;
+        max-width: 200px;
+        min-height: 20px;
+        border-radius: 3px;
     }
     .brand-box-name {
-        width: 100px;
+        width: 60px;
         gap: 0px;
     }
     .bran-name {
@@ -249,22 +286,22 @@
         font-weight: 400;
     }
     .brand-icon {
-        width: 30px;
-        height: 30px;
+        width: 15px;
+        height: 15px;
     }
     header {
         gap: 0px;
     }
-    .button-color-castom {
-        margin-right: 0px;
-    }
     .search-box {
         margin-left: 0px;
-        width: clamp(50px, 50px, 720px);
+        width: 20px;
+        height: 20px;
         justify-self: center;
     }
     .search-icon {
-        margin-left: 5px;
+        margin-left: 0px;
+        width: 20px;
+        height: 20px;
     }
     .search-box.clicked {
         width: clamp(50px, 100%, 720px);
@@ -286,5 +323,34 @@
     .keep-content {
         margin: 0px;
         font-size: 12px;
+    }
+    .keep-text {
+        margin: 5px 0px 0px 15px;
+        font-size: 10px;
+    }
+    header {
+        gap: 0px;
+        height: 30px;
+    }
+    .button-color-castom {
+        margin-right: 10px;
+        width: 20px;
+        height: 20px;
+    }
+    .main {
+        padding-top: 10px;
+    }
+    .creater {
+        min-height: 20px;
+        padding: 5px;
+        font-size: 10px;
+    }
+    .creater.clicked {
+        margin-bottom: 0px;
+    }
+    .pin {
+        height: 20px;
+        align-self: center;
+        width: 20px;
     }
 }
