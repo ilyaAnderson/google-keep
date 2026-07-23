@@ -440,6 +440,54 @@ background-color: rgba(255, 255, 255, 0.526);
     padding: 0px 50px 0px 50px;
     box-sizing: border-box;
 } 
+.tab-burger {
+    display: none;
+    flex-direction: row;
+    gap: 10px;
+    width: 50%;
+    height: 50px;
+    top: 50px;
+    justify-self: center;
+}
+.tab-burger-arrow {
+    height: 100%;
+    flex-grow: 1;
+    border-radius: 5px;
+    backdrop-filter: blur(10px) brightness(1.1);
+    box-shadow: inset 2px 2px 10px rgba(255, 255, 255, 0.3);
+    background: url(Photo/arrow.svg) no-repeat center / 50%;
+}
+.tab-burger-arrow.left {
+    box-shadow: inset -2px -2px 10px rgba(255, 255, 255, 0.3);
+    rotate: 180deg;
+}
+.tab-burger-item {
+    display: grid;
+    place-items: center;
+    font-size: 18px;
+    color: var(--color-text-brand);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100%;
+    flex-grow: 3;
+    border-radius: 5px;
+    backdrop-filter: blur(10px) brightness(1.1);
+    box-shadow: inset 2px 2px 10px rgba(255, 255, 255, 0.3);
+}
+input[type="range"] {
+  writing-mode: vertical-lr; /* Делает элемент вертикальным */
+  direction: rtl; /* Направление от минимума (внизу) к максимуму (вверху) */
+  /* appearance: slider-vertical; */
+}
+.feature-box {
+    grid-row: 3;
+    grid-column: 1 / 6;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+}
 .screen, .screen-test {
     position: relative;
     width: 15px;
@@ -1027,10 +1075,9 @@ input[type = 'submit']:hover {
 }
 .feature {
     display: grid;
+    column-gap: 10px;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 20px 1fr 50px;
-    grid-column: auto;
-    grid-row: 3;
     place-items: center;
 }
 .preview {
@@ -1046,7 +1093,7 @@ input[type = 'submit']:hover {
 }
 .view {
     flex-direction: column;
-    gap: 50px;
+    gap: 0px;
     grid-column: 1/6;
     grid-row: 2;
     display: grid;
@@ -1073,13 +1120,12 @@ input[type = 'submit']:hover {
 }
 .feature-range {
     appearance: none;
-    rotate: -90deg;
     grid-row: 2;
-    width: 130%;
+    width: 10%;
+    height: 80%;
     background-color: transparent;
     background-image: linear-gradient(to left, var(--color-keep), transparent);
     border-radius: 50vh;
-    height: 10px;
     box-shadow: 
     -5px 0px 5px rgba(0, 0, 0, 0.3),
     5px 0px 5px rgba(255, 255, 255, 0.3),
