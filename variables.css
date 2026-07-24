@@ -151,7 +151,7 @@
     .keeps-box {
         padding: 0px 20px;
         gap: 5px;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
     }
     .main-box-creater {
         width: 500px;
