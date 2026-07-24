@@ -813,42 +813,42 @@ range_border.addEventListener('input', () => {
     ArrayCastom[`--opacity-border`] = range_border.value / 100
     document.documentElement.style.setProperty('--opacity-border', range_border.value / 100)
 })
-// const range_shadow = document.querySelector('#opacity-shadow-feature')
-// range_shadow.addEventListener('input', () => {
-//     ArrayCastom[`--opacity-shadow`] = range_shadow.value / 100
-//     document.documentElement.style.setProperty('--opacity-shadow', range_shadow.value / 100)
-// })
-// const color_shadow_feature = document.querySelector('#color-shadow-feature')
-// color_shadow_feature.addEventListener('input', () => {
-//     ArrayCastom[`--color-shadow`] = color_shadow_feature.value
-//     document.documentElement.style.setProperty('--color-shadow', color_shadow_feature.value)
-// })
-// const brightness_shadow = document.querySelector('#brightness-shadow')
-// brightness_shadow.addEventListener('input', () => {
-//     ArrayCastom[`--brightness-shadow`] = brightness_shadow.value
-//     console.log();
-//     document.documentElement.style.setProperty('--brightness-shadow', `${brightness_shadow.value}px`)
-// })
-// const range_title = document.querySelector('#opacity-title')
-// range_title.addEventListener('input', () => {
-//     ArrayCastom[`--opacity-brand`] = range_title.value / 100
-//     document.documentElement.style.setProperty('--opacity-brand', range_title.value / 100)
-// })
-// const color_title = document.querySelector('#color-title')
-// color_title.addEventListener('input', () => {
-//     ArrayCastom[`--color-text-title`] = color_title.value
-//     document.documentElement.style.setProperty('--color-text-title', color_title.value)
-// })
-// const range_content = document.querySelector('#opacity-content')
-// range_content.addEventListener('input', () => {
-//     ArrayCastom[`--opacity-content`] = range_content.value / 100
-//     document.documentElement.style.setProperty('--opacity-content', range_content.value / 100)
-// })
-// const color_content = document.querySelector('#color-content')
-// color_content.addEventListener('input', () => {
-//     ArrayCastom[`--color-text-keep-content`] = color_content.value
-//     document.documentElement.style.setProperty('--color-text-keep-content', color_content.value)
-// })
+const range_shadow = document.querySelector('#opacity-shadow-feature')
+range_shadow.addEventListener('input', () => {
+    ArrayCastom[`--opacity-shadow`] = range_shadow.value / 100
+    document.documentElement.style.setProperty('--opacity-shadow', range_shadow.value / 100)
+})
+const color_shadow_feature = document.querySelector('#color-shadow-feature')
+color_shadow_feature.addEventListener('input', () => {
+    ArrayCastom[`--color-shadow`] = color_shadow_feature.value
+    document.documentElement.style.setProperty('--color-shadow', color_shadow_feature.value)
+})
+const brightness_shadow = document.querySelector('#brightness-shadow')
+brightness_shadow.addEventListener('input', () => {
+    ArrayCastom[`--brightness-shadow`] = brightness_shadow.value
+    console.log();
+    document.documentElement.style.setProperty('--brightness-shadow', `${brightness_shadow.value}px`)
+})
+const range_title = document.querySelector('#opacity-title')
+range_title.addEventListener('input', () => {
+    ArrayCastom[`--opacity-brand`] = range_title.value / 100
+    document.documentElement.style.setProperty('--opacity-brand', range_title.value / 100)
+})
+const color_title = document.querySelector('#color-title')
+color_title.addEventListener('input', () => {
+    ArrayCastom[`--color-text-title`] = color_title.value
+    document.documentElement.style.setProperty('--color-text-title', color_title.value)
+})
+const range_content = document.querySelector('#opacity-content')
+range_content.addEventListener('input', () => {
+    ArrayCastom[`--opacity-content`] = range_content.value / 100
+    document.documentElement.style.setProperty('--opacity-content', range_content.value / 100)
+})
+const color_content = document.querySelector('#color-content')
+color_content.addEventListener('input', () => {
+    ArrayCastom[`--color-text-keep-content`] = color_content.value
+    document.documentElement.style.setProperty('--color-text-keep-content', color_content.value)
+})
 const range_search_feature = document.querySelector('#opacity-search')
 range_search_feature.addEventListener('input', () => {
     ArrayCastom[`--bg-opacity`] = range_search_feature.value / 100
