@@ -106,8 +106,8 @@ header {
     grid-column: 5;
 }
 [data-tooltip] {
-    z-index: 10;
-  position: relative;
+    z-index: 900;
+    position: relative;
 }
 [data-tooltip]::after {
   content: attr(data-tooltip);

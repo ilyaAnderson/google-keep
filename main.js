@@ -293,6 +293,7 @@ document.addEventListener('click', (event) => {
                 content.replaceWith(newContent)
             }
             newContent.style.padding = '0px'
+            newContent.style.color = 'var(--color-text-creater-result)'
             const title = grandfather.querySelector('.keep-head')
             const newTitle = document.createElement('input')
             newTitle.type = 'text'
