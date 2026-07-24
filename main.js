@@ -356,7 +356,7 @@ document.body.addEventListener('click', (event) => {
     const t = event.target;
     
     
-    if (t === mainCreater || t === ButtonSearch || t === createrHead || t === pin || t === createrInput || 
+    if (t === mainCreater || t === ButtonSearch || t === search || t === createrHead || t === pin || t === createrInput || 
         t === createrIconPhoto || t === mainBlockButton || t === mainBoxCreater || t === photoSecond) {
         return;
     }
@@ -911,4 +911,3 @@ replacementColor("color", "color-text-creater", "color_text_creater_feature", "-
 //         tumbler_value = false
 //     }
 // })
-

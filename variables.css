@@ -223,6 +223,24 @@
     .active-tab {
         backdrop-filter: saturate(140%) brightness(1.1);
     }
+    .delete::before, .pin-keep::before {
+        opacity: 0.5;
+    }
+    .search {
+        font-size: 14px;
+    }
+    .saveCastom, .ClearsaveCastom {
+        font-size: 14px;
+        font-weight: 300;
+        text-align: center;
+        width: fit-content;
+        height: fit-content;
+        padding-inline: 10px;
+        padding-block: 20px;
+    }
+    .screen::before {
+        opacity: 1;
+    }
     .keeps-box {
         padding: 0px 5px;
         gap: 5px;
@@ -236,6 +254,9 @@
     }
     .main-box-creater.clicked {
         padding: 5px;
+    }
+    .main-box-creater-test.clicked {
+        width: 50%;
     }
     .creater-head {
         font-size: 14px;
@@ -282,6 +303,7 @@
         width: 20px;
     }
     .search-box {
+        transition: all 0.3s ease;
         margin-left: 0px;
         height: 30px;
         width: 30px;
@@ -292,7 +314,7 @@
         width: 30px;
     }
     .search-box.clicked {
-        width: clamp(50px, 100%, 720px);
+        width: 50%;
     }
     .keep {
         grid-template-rows: 20px auto 1fr;
@@ -352,7 +374,7 @@
     }
     .tab-burger-item {
         flex: 2;
-        font-size: 14px;
+        font-size: 38px;
     }
     .keep-test {
         align-self: flex-start;
@@ -377,6 +399,9 @@
     }
 }
 @media ( max-width: 360px ) {
+    .search {
+        font-size: 10px;
+    }
     .keeps-box {
         padding: 0px 3px;
         gap: 3px;
