@@ -1,3 +1,7 @@
+// 0. Интерфейс 
+const rootStyles = getComputedStyle(document.documentElement);
+const primaryColor = rootStyles.getPropertyValue('--mobbile').trim();
+document.getElementById('theme-meta').setAttribute('content', primaryColor);
 // 1. Кешируем элементы один раз, чтобы не искать их постоянно
 const demo__button = document.querySelector(".creater-icon-photo");
 const keeps_box = document.querySelector('.keeps-box');
