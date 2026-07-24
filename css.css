@@ -474,9 +474,12 @@ background-color: rgba(255, 255, 255, 0.526);
     box-shadow: inset 2px 2px 10px rgba(255, 255, 255, 0.3);
 }
 input[type="range"] {
-  writing-mode: vertical-lr; /* Делает элемент вертикальным */
-  direction: rtl; /* Направление от минимума (внизу) к максимуму (вверху) */
-  /* appearance: slider-vertical; */
+  /* Замена устаревшего свойства */
+  writing-mode: vertical-lr; 
+  direction: rtl;            
+  
+  /* Дополнительно для поддержки старых Safari/Firefox, если необходимо */
+  appearance: none; 
 }
 .feature-box {
     grid-row: 3;
@@ -651,7 +654,7 @@ input[type = 'submit']:hover {
     min-height: 150px;
     height: fit-content;
     max-height: 60%;
-    backdrop-filter: url(#liquid-distortion) blur(20px) brightness(130%); ;
+    backdrop-filter: url(#liquid-distortion) blur(20px) brightness(130%);
     overflow-x: hidden;
     overflow-y: scroll;
     z-index: 5;
@@ -1124,7 +1127,7 @@ input[type = 'submit']:hover {
     width: 10%;
     height: 80%;
     background-color: transparent;
-    background-image: linear-gradient(to left, var(--color-keep), transparent);
+    background-image: linear-gradient(to bottom, var(--color-keep), transparent);
     border-radius: 50vh;
     box-shadow: 
     -5px 0px 5px rgba(0, 0, 0, 0.3),

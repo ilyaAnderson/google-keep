@@ -19,6 +19,7 @@ const arrLocal = JSON.parse(localStorage.getItem('history')) || [];
 const buttonColorCastom = document.querySelector('.button-color-castom')
 const buttonExit = document.querySelector('.button-exit')
 const tumbler = document.querySelector('.tumbler')
+const searchBox = document.querySelector('.search-box')
 const search = document.querySelector('.search')
 const ButtonSearch = document.querySelector('.search-icon')
 const computedStyles = window.getComputedStyle(document.documentElement);
@@ -29,6 +30,11 @@ const tabs = document.querySelectorAll('.tab')
 const buttonSubmitClear = document.querySelector('#submit-castom-clear')
 const saves = document.querySelectorAll('.saveCastom')
 const clearsaves = document.querySelectorAll('.ClearsaveCastom')
+let isSmallScreen = window.matchMedia('(max-width: 768px)').matches;
+setInterval(() => {
+    isSmallScreen = window.matchMedia('(max-width: 768px)').matches;
+}, 3000)
+console.log(isSmallScreen);
 let typeCastom = undefined
 let ArrayCastom = new Object
 let important = undefined
@@ -118,6 +124,10 @@ search.addEventListener('input', () => {
 });
 
 ButtonSearch.addEventListener('click', () => {
+    if (isSmallScreen && searchBox.classList.contains('clicked') == false ) {
+        searchBox.classList.add('clicked')
+        return console.log("add");
+    }    
     let Arraay = search.value.replaceAll(' ', '&')
     console.log(window.location);
     slideTwo.style.transform = 'translateY(-100vh'
@@ -204,7 +214,49 @@ document.addEventListener('click', (event) => {
             grandfather.classList.remove('fullscreen')
             document.body.removeChild(shutdown_back)
         }
-    }  else if ( event.target.classList.contains('pin-keep')) {
+    }  else if ( event.target.classList.contains('tab-burger-arrow')) {
+        const t = event.target
+        console.log(t.getAttribute('data-arrow'));
+        console.log(t.classList.contains('left'));
+        console.log(typeCastom);
+        if ( typeCastom == 'keep' ) {
+            if (t.classList.contains('left')) {
+                console.log("left");
+                typeCastom = "creater"
+                const item = document.querySelector(`.tab-burger-item[data-arrow="${typeCastom}"`)
+                item.textContent = "Создатель"
+                return render()
+            }
+            typeCastom = "search"
+            const item = document.querySelector(`.tab-burger-item[data-arrow="${typeCastom}"`)
+            item.textContent = "Поиск"
+            return render()
+        } else if ( typeCastom == 'search' ) {
+            if (t.classList.contains('left')) {
+                console.log("left");
+                typeCastom = "keep"
+                const item = document.querySelector(`.tab-burger-item[data-arrow="${typeCastom}"`)
+                item.textContent = "Заметка"
+                return render()
+            }
+            typeCastom = "creater"
+                const item = document.querySelector(`.tab-burger-item[data-arrow="${typeCastom}"`)
+                item.textContent = "Создатель"
+            return render()
+        } else if ( typeCastom == 'creater' ) {
+            if (t.classList.contains('left')) {
+                console.log("left");
+                typeCastom = "search"
+                const item = document.querySelector(`.tab-burger-item[data-arrow="${typeCastom}"`)
+                item.textContent = "Поиск"
+                return render()
+            }
+            typeCastom = "keep"
+                const item = document.querySelector(`.tab-burger-item[data-arrow="${typeCastom}"`)
+                item.textContent = "Заметка"
+            return render()
+        }
+    } else if ( event.target.classList.contains('pin-keep')) {
                     console.log("тут");
                     const g = event.target
                     const k = g.parentElement
@@ -304,13 +356,20 @@ document.body.addEventListener('click', (event) => {
     const t = event.target;
     
     
-    if (t === mainCreater || t === createrHead || t === pin || t === createrInput || 
+    if (t === mainCreater || t === ButtonSearch || t === createrHead || t === pin || t === createrInput || 
         t === createrIconPhoto || t === mainBlockButton || t === mainBoxCreater || t === photoSecond) {
         return;
     }
+
+    if (isSmallScreen && searchBox.classList.contains('clicked')) {
+        searchBox.classList.remove('clicked')
+        console.log("remove");
+    }   
+
     // Закрываем форму
     const elements = [createrHead, pin, mainBlockButton, createrIconPhoto, mainCreater, mainBoxCreater, createrInput];
     elements.forEach(el => el && el.classList.remove('clicked'));
+     
 
     if (event.relatedTarget && event.relatedTarget.id === 'keepcontent') return;
 
