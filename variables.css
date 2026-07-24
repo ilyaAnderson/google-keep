@@ -53,7 +53,7 @@
 --color-text-creater: rgb(255,255,255);
 --color-text-creater-result: color-mix(in srgb, var(--color-text-creater) calc(var(--opacity-text-creater) * 100%), transparent);
 --color-text-creater-placeholder: color-mix(in srgb, var(--color-text-creater) calc(var(--opacity-text-creater) * 50%), transparent);
---mobbile: rgb(231, 255, 242);
+--mobbile: white;
 }
 @media (prefers-color-scheme: dark) {
 :root {
