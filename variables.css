@@ -1,5 +1,5 @@
 :root {
---main-color-back: url('Photo/12-Monterey-Light');
+--main-color-back: url('Photo/12-Monterey-Light.jpg');
 --main-color-search: rgb(232, 237, 249);
 --bg-opacity: 0.5;
 --keep-opacity: 0.1;
@@ -58,7 +58,7 @@
 @media (prefers-color-scheme: dark) {
 :root {
 --mobbile: black;
---main-color-back: url(Photo/12-Monterey-Dark); 
+--main-color-back: url(Photo/12-Monterey-Dark.jpg); 
 --media-pin: url(Photo/pinOutWhite.png);
 --media-pin-used: url(Photo/pinDownWhite.png);
 --main-color-search: rgb(232, 237, 249);
